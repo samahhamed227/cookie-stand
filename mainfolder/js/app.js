@@ -63,19 +63,34 @@ salmonecookies.prototype.sales= function(){
 let parent10 = document.getElementById('creatTable');
 let tableEl = document.createElement('table');
 parent10.appendChild(tableEl);
-let headingRow = document.createElement('th');
- tableEl.appendChild(headingRow);
+//let headingRow = document.createElement('th');
+ //tableEl.appendChild(headingRow);
  let nameData = document.createElement('td');
- headingRow.appendChild(nameData);
 
+  
+  
+
+
+
+
+  let studentRow22 = document.createElement('tr');
+  tableEl.appendChild(studentRow22);
+  let nameData23 = document.createElement('td');
+    studentRow22.appendChild(nameData23);
+    nameData23.textContent = "";
  for (let i = 0; i < hours.length; i++) {
-  let nameEle = document.createElement('th');
-  headingRow.appendChild(nameEle);
-  nameEle.textContent = hours[i]; 
+
+
+  tableEl.appendChild(studentRow22);
+  let nameData= document.createElement('td');
+    studentRow22.appendChild(nameData); 
+   nameData.textContent = hours[i]; 
   
   
 
  }
+
+ 
  //seattle
  let studentRow2 = document.createElement('tr');
  tableEl.appendChild(studentRow2);
@@ -88,7 +103,6 @@ let headingRow = document.createElement('th');
   tableEl.appendChild(studentRow2);
   let nameData= document.createElement('td');
     studentRow2.appendChild(nameData); 
-    
   nameData.textContent =Seattle.customers() ; 
   
  }
