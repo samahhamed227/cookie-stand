@@ -5,225 +5,154 @@ let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm
 /*
 Location 1
 */
-let hourlySales= [];
-let storedCreatedObj = [];
-//constractour
-function salmonecookies(name,minCust, maxCust, avgSale,cookieTotal) {
+
+//random function 
+
+function random(min,max)
+{
+  return  Math.floor(Math.random() * (max - min + 1)) + min;
+
+}
+
+
+let storedCreatedObj = [];//shope array
+//constractour shop
+function salmonecookies(name,minCust, maxCust, avgSale) {
 this.name=name;
 this.minCust=minCust;
 this.maxCust=maxCust;
 this.avgSale=avgSale;
-this.cookieTotal=cookieTotal;
-
-//method
-this.customers= function(){
- 
-   return  Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-}
-
+this.cookieTotal=0;
+this.calccust = [];
+this.cookiesech=[];
+this.total=[];
+this. hourlySales= [];//customer eachour
+// sales cookiesechhour
 storedCreatedObj.push(this);
+
 }
-let Seattle = new salmonecookies ('Seattle',23,65,6.3,0);
-Seattle.customers();
-console.log(Seattle);
-let Tokyo =new salmonecookies('Tokyo',3,24,1.2,0);
-Tokyo.customers();
-console.log(Tokyo);
 
-  let Dubai =new salmonecookies('Dubai',11,38,3.7,0);
-  Dubai.customers();
-  console.log(Dubai);
 
-  let Paris =new salmonecookies('PAris',20,38,2.3,0);
-  Paris.customers();
-  console.log(Paris);
 
-  let Lima =new salmonecookies('Lima',2,16,4.6,0);
-  Lima.customers();
-  console.log(Lima);
-  console.log( this.hourlySales);
-
-salmonecookies.prototype.sales= function(){
-  
-  
+//calculate customer hour
+salmonecookies.prototype.cust= function(){
   
   for(let i = 0; i < hours.length; i++){
+    this.calccust.push(random(this.minCust,this.maxCust));
     
-    let sum = Math.ceil(this.customers() * this.avgSale);
-    this.hourlySales[i].push(sum);
-    this.cookieTotal += sum;
     
   }
-
-  this.cookieTotal+=this.sales();
- console.log(this.cookieTotal);
   
 }
-
-
-
-
-let parent10 = document.getElementById('creatTable');
-let tableEl = document.createElement('table');
-parent10.appendChild(tableEl);
-//let headingRow = document.createElement('th');
- //stableEl.appendChild(headingRow);
- let nameData = document.createElement('td');
-
-  
-  
-
-
-
-
-  let studentRow22 = document.createElement('tr');
-  tableEl.appendChild(studentRow22);
-  let nameData23 = document.createElement('td');
-    studentRow22.appendChild(nameData23);
-    nameData23.textContent = "";
- for (let i = 0; i < hours.length; i++) {
-
-
-  tableEl.appendChild(studentRow22);
-  let nameData= document.createElement('td');
-    studentRow22.appendChild(nameData); 
-   nameData.textContent = hours[i]; 
-  
-  
- }
-  tableEl.appendChild(studentRow22);
-   nameData23 = document.createElement('td');
-    studentRow22.appendChild(nameData23);
-    nameData23.textContent = 'Daily total' ;
- 
-
- 
- 
- //seattle
- let studentRow2 = document.createElement('tr');
- tableEl.appendChild(studentRow2);
- let nameData2 = document.createElement('td');
-   studentRow2.appendChild(nameData2);
-   nameData2.textContent = "seattle";
-   
- for (let i = 0; i < hours.length; i++) {
- 
-  tableEl.appendChild(studentRow2);
-  let nameData= document.createElement('td');
-    studentRow2.appendChild(nameData); 
-  nameData.textContent =Seattle.customers() ; 
-  
- }
-
- tableEl.appendChild(studentRow2);
-   nameData = document.createElement('td');
-    studentRow2.appendChild(nameData);
-    nameData.textContent =Seattle.cookieTotal ;
-//tokyo
-   let studentRow4 = document.createElement('tr');
- tableEl.appendChild(studentRow4);
- let nameData4 = document.createElement('td');
-   studentRow4.appendChild(nameData4);
-   nameData4.textContent = "Tokyo";
-   for (let i = 0; i < hours.length; i++) {
- 
-    tableEl.appendChild(studentRow4);
-    let nameData10= document.createElement('td');
-      studentRow4.appendChild(nameData10); 
-    nameData10.textContent =Tokyo.customers() ; 
+//calculate cookies
+salmonecookies.prototype.calccookies=function(){
+  for(let i = 0; i < hours.length; i++){
     
-   }
-   tableEl.appendChild(studentRow4);
-   let nameData101 = document.createElement('td');
-    studentRow4.appendChild(nameData101);
-    nameData101.textContent =Tokyo.cookieTotal ;
-   
-//Dubai
-let studentRow5 = document.createElement('tr');
-tableEl.appendChild(studentRow5);
- let nameData5 = document.createElement('td');
-   studentRow5.appendChild(nameData5);
-   nameData5.textContent = "Dubai";
-   for (let i = 0; i < hours.length; i++) {
+    this.cookiesech.push(Math.floor(this.avgSale*this.calccust[i]));
+    //this.cookieTotal+=this.cookiesech[i];
+    this.cookieTotal += this.cookiesech[i];
+
+  }
+}
+
+let Seattle = new salmonecookies ('Seattle',23,65,6.3,0);
+let Tokyo =new salmonecookies('Tokyo',3,24,1.2,0);
+  let Dubai =new salmonecookies('Dubai',11,38,3.7,0);
+  let Paris =new salmonecookies('PAris',20,38,2.3,0);
+  let Lima =new salmonecookies('Lima',2,16,4.6,0);  
+  console.log( storedCreatedObj);
+
+
+
+// html
+let parent = document.getElementById('creatTable');
+console.log(parent);
+let tableEl = document.createElement('table');
+parent.appendChild(tableEl);
+
+ // render function
+function makeheader (){
+//creat head global
+  let headingRow = document.createElement('tr');
+ tableEl.appendChild(headingRow);
+
+//creat th
+ let nameData = document.createElement('th');
+ headingRow.appendChild(nameData);
+ nameData.textContent='name';
  
-    tableEl.appendChild(studentRow5);
-    let nameData11= document.createElement('td');
-      studentRow5.appendChild(nameData11); 
-    nameData11.textContent =Dubai.customers() ; 
-   }
+ for (let i = 0; i < hours.length; i++) {
+let thlement = document.createElement('th');
+headingRow.appendChild(thlement);  
+thlement.textContent= hours[i]; 
 
-   tableEl.appendChild(studentRow5);
-   let nameData102 = document.createElement('td');
-    studentRow5.appendChild(nameData102);
-    nameData102.textContent =Dubai.cookieTotal ;
+ }
+ let thlement2 = document.createElement('th');
+headingRow.appendChild(thlement2);  
+thlement2.textContent= 'Daily total'; 
 
-//paris
-let studentRow6 = document.createElement('tr');
+}
 
- tableEl.appendChild(studentRow6);
- let nameData6 = document.createElement('td');
-   studentRow6.appendChild(nameData6);
-   nameData6.textContent = "Paris";
-  
-   for (let i = 0; i < hours.length; i++) {
- 
-    tableEl.appendChild(studentRow6);
-    let nameData12= document.createElement('td');
-      studentRow6.appendChild(nameData12); 
-    nameData12.textContent =Paris.customers() ; 
-   }
+makeheader();
 
-   tableEl.appendChild(studentRow6);
-   let nameData103 = document.createElement('td');
-    studentRow6.appendChild(nameData103);
-    nameData103.textContent =Paris.cookieTotal ;
-   //lima
-   let studentRow7 = document.createElement('tr');
+//prototypefunction
 
-   tableEl.appendChild(studentRow7);
-   let nameData7 = document.createElement('td');
-     studentRow7.appendChild(nameData7);
-     nameData7.textContent = "Lima";
+salmonecookies.prototype.render =function(){
+let drow = document.createElement('tr');
+tableEl.appendChild(drow);
 
-     for (let i = 0; i < hours.length; i++) {
- 
-      tableEl.appendChild(studentRow7);
-      let nameData13= document.createElement('td');
-        studentRow7.appendChild(nameData13); 
-      nameData13.textContent =Lima.customers() ; 
-     }
+//name location
+let namdata =document.createElement('td');
+drow.appendChild(namdata);
+namdata.textContent=this.name;
 
-     tableEl.appendChild(studentRow7);
-     let nameData104 = document.createElement('td');
-      studentRow7.appendChild(nameData104);
-      nameData104.textContent =Lima.cookieTotal ;
+//cookies data
+for (let i = 0; i < hours.length; i++) {
+  let tdel =document.createElement('td');
+  drow.appendChild(tdel); 
+tdel.textContent=this.cookiesech[i];
 
-      function makefooter(){
-        let footerrow =document.createElement('tr');
+}
+let totalday =document.createElement('td');
+drow.appendChild(totalday);
+totalday.textContent=this.cookieTotal;
+}
+
+// for loop to call the functions 
+for(let i = 0; i < storedCreatedObj.length; i++){
+  storedCreatedObj[i].cust(); //calculate customer 
+  storedCreatedObj[i].calccookies();///calculate cookies
+  storedCreatedObj[i].render();// render
+}
+console.log
+
+function makefooter(){
+  let footerrow =document.createElement('tr');
 tableEl.appendChild(footerrow);
 let footerht =document.createElement('td');
 footerrow.appendChild(footerht);
 footerht.textContent='Total';
-      
-          let megaTotal = 0;
-      for (let i = 0; i < hours.length; i++) {
-          let sum = 0;
-          for (var j = 0; j < hourlySales.length; j++) {
-              sum += hourlySales[j].cookiesEachHouer[i];
-          }
-          let trEl=document.createElement("tr");
-          megaTotal += sum;  
-          let tdEl = document.createElement('td');
-          trEl.appendChild(tdEl);
-          tdEl.textContent = sum;
-        
-      let tddEl = document.createElement('td');
-      trEl.appendChild(tddEl);
-      tddEl.textContent = megaTotal;
-        }
-      }
-      makefooter();
-      
-      
-        
- 
+
+//mega total
+    let megaTotal = 0;
+for (let i = 0; i < hours.length; i++) {
+    let sum = 0;
+    for (var j = 0; j < storedCreatedObj.length; j++) {
+      sum += storedCreatedObj[j].cookiesech[i];
+    }
+
+    megaTotal += sum;
+
+    console.log(sum);
+    // let trEl=document.createElement("tr");
+    // megaTotal += sum;  
+    let tdEl = document.createElement('td');
+    footerrow.appendChild(tdEl);
+    tdEl.textContent = sum;
+  
+  }
+  let finaltd = document.createElement('td');
+  footerrow.appendChild(finaltd);
+  finaltd.textContent=megaTotal;
+}
+makefooter();
