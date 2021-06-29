@@ -5,7 +5,7 @@ let hours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm
 /*
 Location 1
 */
-
+let hourlySales= [];
 let storedCreatedObj = [];
 //constractour
 function salmonecookies(name,minCust, maxCust, avgSale,cookieTotal) {
@@ -14,7 +14,7 @@ this.minCust=minCust;
 this.maxCust=maxCust;
 this.avgSale=avgSale;
 this.cookieTotal=cookieTotal;
-this.hourlySales= [];
+
 //method
 this.customers= function(){
  
@@ -50,13 +50,16 @@ salmonecookies.prototype.sales= function(){
   for(let i = 0; i < hours.length; i++){
     
     let sum = Math.ceil(this.customers() * this.avgSale);
-    this.hourlySales.push(sum);
+    this.hourlySales[i].push(sum);
     this.cookieTotal += sum;
-
+    
   }
 
+  this.cookieTotal+=this.sales();
+ console.log(this.cookieTotal);
   
 }
+
 
 
 
@@ -64,7 +67,7 @@ let parent10 = document.getElementById('creatTable');
 let tableEl = document.createElement('table');
 parent10.appendChild(tableEl);
 //let headingRow = document.createElement('th');
- //tableEl.appendChild(headingRow);
+ //stableEl.appendChild(headingRow);
  let nameData = document.createElement('td');
 
   
@@ -87,9 +90,14 @@ parent10.appendChild(tableEl);
    nameData.textContent = hours[i]; 
   
   
-
  }
+  tableEl.appendChild(studentRow22);
+   nameData23 = document.createElement('td');
+    studentRow22.appendChild(nameData23);
+    nameData23.textContent = 'Daily total' ;
+ 
 
+ 
  
  //seattle
  let studentRow2 = document.createElement('tr');
@@ -106,6 +114,11 @@ parent10.appendChild(tableEl);
   nameData.textContent =Seattle.customers() ; 
   
  }
+
+ tableEl.appendChild(studentRow2);
+   nameData = document.createElement('td');
+    studentRow2.appendChild(nameData);
+    nameData.textContent =Seattle.cookieTotal ;
 //tokyo
    let studentRow4 = document.createElement('tr');
  tableEl.appendChild(studentRow4);
@@ -120,6 +133,11 @@ parent10.appendChild(tableEl);
     nameData10.textContent =Tokyo.customers() ; 
     
    }
+   tableEl.appendChild(studentRow4);
+   let nameData101 = document.createElement('td');
+    studentRow4.appendChild(nameData101);
+    nameData101.textContent =Tokyo.cookieTotal ;
+   
 //Dubai
 let studentRow5 = document.createElement('tr');
 tableEl.appendChild(studentRow5);
@@ -133,6 +151,12 @@ tableEl.appendChild(studentRow5);
       studentRow5.appendChild(nameData11); 
     nameData11.textContent =Dubai.customers() ; 
    }
+
+   tableEl.appendChild(studentRow5);
+   let nameData102 = document.createElement('td');
+    studentRow5.appendChild(nameData102);
+    nameData102.textContent =Dubai.cookieTotal ;
+
 //paris
 let studentRow6 = document.createElement('tr');
 
@@ -148,6 +172,11 @@ let studentRow6 = document.createElement('tr');
       studentRow6.appendChild(nameData12); 
     nameData12.textContent =Paris.customers() ; 
    }
+
+   tableEl.appendChild(studentRow6);
+   let nameData103 = document.createElement('td');
+    studentRow6.appendChild(nameData103);
+    nameData103.textContent =Paris.cookieTotal ;
    //lima
    let studentRow7 = document.createElement('tr');
 
@@ -164,11 +193,37 @@ let studentRow6 = document.createElement('tr');
       nameData13.textContent =Lima.customers() ; 
      }
 
+     tableEl.appendChild(studentRow7);
+     let nameData104 = document.createElement('td');
+      studentRow7.appendChild(nameData104);
+      nameData104.textContent =Lima.cookieTotal ;
 
-
-
-
- 
-
- 
+      function makefooter(){
+        let footerrow =document.createElement('tr');
+tableEl.appendChild(footerrow);
+let footerht =document.createElement('td');
+footerrow.appendChild(footerht);
+footerht.textContent='Total';
+      
+          let megaTotal = 0;
+      for (let i = 0; i < hours.length; i++) {
+          let sum = 0;
+          for (var j = 0; j < hourlySales.length; j++) {
+              sum += hourlySales[j].cookiesEachHouer[i];
+          }
+          let trEl=document.createElement("tr");
+          megaTotal += sum;  
+          let tdEl = document.createElement('td');
+          trEl.appendChild(tdEl);
+          tdEl.textContent = sum;
+        
+      let tddEl = document.createElement('td');
+      trEl.appendChild(tddEl);
+      tddEl.textContent = megaTotal;
+        }
+      }
+      makefooter();
+      
+      
+        
  
