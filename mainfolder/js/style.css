@@ -27,3 +27,20 @@ padding-bottom: 25%;
 text-align:left;
 
 }
+form li{list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-left: 2%;
+
+    overflow: hidden;
+    
+float: left;
+    text-align:left;
+
+
+
+}
+
+footer pre{
+    text-align:left; 
+}
