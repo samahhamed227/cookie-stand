@@ -15,6 +15,7 @@ function random(min,max)
 }
 
 
+let shop = [];
 let storedCreatedObj = [];//shope array
 //constractour shop
 function salmonecookies(name,minCust, maxCust, avgSale) {
@@ -26,6 +27,7 @@ this.cookieTotal=0;
 this.calccust = [];
 this.cookiesech=[];
 this.total=[];
+this.newrow=[];
 this. hourlySales= [];//customer eachour
 // sales cookiesechhour
 storedCreatedObj.push(this);
@@ -60,6 +62,7 @@ let Tokyo =new salmonecookies('Tokyo',3,24,1.2,0);
   let Dubai =new salmonecookies('Dubai',11,38,3.7,0);
   let Paris =new salmonecookies('PAris',20,38,2.3,0);
   let Lima =new salmonecookies('Lima',2,16,4.6,0);  
+
   console.log( storedCreatedObj);
 
 
@@ -113,6 +116,7 @@ for (let i = 0; i < hours.length; i++) {
 tdel.textContent=this.cookiesech[i];
 
 }
+// total day 
 let totalday =document.createElement('td');
 drow.appendChild(totalday);
 totalday.textContent=this.cookieTotal;
@@ -123,11 +127,22 @@ for(let i = 0; i < storedCreatedObj.length; i++){
   storedCreatedObj[i].cust(); //calculate customer 
   storedCreatedObj[i].calccookies();///calculate cookies
   storedCreatedObj[i].render();// render
+  
 }
-console.log
+console.log();
 
+  
+
+
+//// -------------------call amman form function ------------------------------
+
+
+
+
+///// maake footer 
+let footerrow =document.createElement('tr');
 function makefooter(){
-  let footerrow =document.createElement('tr');
+
 tableEl.appendChild(footerrow);
 let footerht =document.createElement('td');
 footerrow.appendChild(footerht);
@@ -156,3 +171,40 @@ for (let i = 0; i < hours.length; i++) {
   finaltd.textContent=megaTotal;
 }
 makefooter();
+
+
+// form 
+let formwork = document.getElementById('store');
+formwork.addEventListener('submit',handleSubmit);
+function handleSubmit(event){
+  
+  event.preventDefault();
+  // will stop refreshing the form when you submit!
+  //V8 engine
+  console.log(event);
+  let location =event.target.location.value;
+console.log(location);
+
+  let mini = parseInt(event.target.mini.value);
+  console.log(mini);
+  let maxi = parseInt(event.target.maxi.value)
+  console.log(maxi);
+
+
+  let avg =parseFloat(event.target.Avg.value)
+ 
+  console.log(avg);
+
+  // (name, interests, isGoodWithCats, isGoodWithDogs, isGoodWithKids)
+  let newobj = new  salmonecookies( location,mini,maxi,avg,);
+  
+ newobj.cust();
+ newobj.calccookies();
+newobj.render();
+footerrow.textContent='';
+makefooter();
+}
+
+
+
+

@@ -44,3 +44,17 @@ float: left;
 footer pre{
     text-align:left; 
 }
+
+fieldset {
+    background-color: #eeeeee;
+  }
+  
+  legend {
+  
+   
+    padding: 5px 10px;
+  }
+  
+  input {
+    margin: 5px;
+  }
