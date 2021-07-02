@@ -4,17 +4,26 @@
 <head>
     <meta charset="UTF-8" />
     <link href="style.css" type="text/css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet'>
 
     <style>
       table, td, th {
         border: 1px solid black;
+        font-family: Georgia;
+
       }
       
       table {
         width: 100%;
-      
+      margin-top: 60px;
       border-collapse:collapse;
+      height:200px;
       }
+  
+      body{
+  background-image: url("back.gif");
+
+ }
       </style>
 </head>
 
@@ -22,9 +31,17 @@
     <header>
       
       <nav>
+        <label class="li1">           <img src="frosted-cookie.jpg" alt="forest"  width="90px"  height="50px">
+             </label>
+             <b href="#" class="li1" style=" color: green;   padding-top: 5px;     font-family: 'Pacifico';font-size: 22px;
+
+">Salmon Cookies</b>   
         <ul >
+          <li   >
+           
+          </li>
             <li  >
-                <a href="index.html" >Home </a>
+                <a href="index.html" ><img src="home1.png" width="40px"> </a>
               </li>
           <li >
             <a href="sales.html">Sales pages</a>
@@ -37,19 +54,23 @@
 <form  id='store'>
   <fieldset id ='fieldname'>
     <legend>cookies store :</legend>
-<label>Location: </label>
-<input type="text" id="location">
+<label><b>Location</b> </label>
 <br>
-  <label for="">min</label>
-  <input type="number" id="mini">
+<input type="text" id="location" class="inputs">
 <br>
-    <label for="">max</label>
-    <input type="number" id="maxi">
+  <label for=""><b>min</b></label>
+  <br>
+  <input type="number" id="mini"  class="inputs">
+<br>
+    <label for=""><b>max</b></label>
     <br>
-<label for="">Avg</label>
-<input type="float" id="Avg"  >
+    <input type="number" id="maxi"  class="inputs">
+    <br>
+<label for=""><b>Avg</b></label>
 <br>
-    <input type="submit" value="Submit">
+<input type="float" id="Avg"   class="inputs">
+<br>
+    <input type="submit" value="Submit" class="button" >
 
   </fieldset>
 </form id="form1">
